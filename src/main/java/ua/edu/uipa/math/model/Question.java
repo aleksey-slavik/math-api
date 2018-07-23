@@ -1,34 +1,37 @@
 package ua.edu.uipa.math.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
 
+/**
+ * Contains all data access layer (DAL) for Question Service.
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Getter
-@Setter
-@ToString
-public class Question {
+@Table(name = "question")
+public final class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
-    @NotBlank
+    @Length(max = 100)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @NotBlank
+    @Length(max = 1000)
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @NotBlank
+    @Length(max = 250)
+    @Column(name = "contacts", nullable = false)
     private String contacts;
 
-    @NotBlank
-    private long createdAt;
+    @Column(name = "created", nullable = false)
+    private long created;
 }
