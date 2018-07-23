@@ -4,10 +4,10 @@
 
 CREATE TABLE IF NOT EXISTS question (
   id SERIAL PRIMARY KEY,
-  title CHARACTER (100) NOT NULL,
+  title CHARACTER (250) NOT NULL,
   description CHARACTER(10000) NOT NULL,
   contacts CHARACTER(250) NOT NULL,
-  created INTEGER NOT NULL
+  created BIGINT NOT NULL
 );
 
 -- rollback DROP TABLE question;

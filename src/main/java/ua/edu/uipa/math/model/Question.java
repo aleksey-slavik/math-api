@@ -1,6 +1,8 @@
 package ua.edu.uipa.math.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -20,7 +22,7 @@ public final class Question {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Length(max = 100)
+    @Length(max = 250)
     @Column(name = "title", nullable = false)
     private String title;
 
@@ -33,5 +35,9 @@ public final class Question {
     private String contacts;
 
     @Column(name = "created", nullable = false)
-    private long created;
+    private Long created;
+
+    public void timestamp() {
+        created = System.currentTimeMillis();
+    }
 }
