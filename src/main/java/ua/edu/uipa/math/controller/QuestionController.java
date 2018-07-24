@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ua.edu.uipa.math.exception.NotFoundException;
 import ua.edu.uipa.math.model.Question;
 import ua.edu.uipa.math.repository.QuestionRepo;
 
@@ -21,13 +22,14 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<?> getQuestionById(@PathVariable Long id) {
+    public ResponseEntity<?> getQuestionById(@PathVariable Long id) {
         Optional<Question> question = questionRepo.findById(id);
+        question.orElseThrow(() -> new NotFoundException("Question with id=" + id + " not found!"));
         return ResponseEntity.ok().body(question);
     }
 
     @PostMapping
-    ResponseEntity<?> postQuestion(@Validated @RequestBody Question question) {
+     public ResponseEntity<?> postQuestion(@Validated @RequestBody Question question) {
         question.timestamp();
         Question response = questionRepo.save(question);
         return ResponseEntity.ok().body(response);
