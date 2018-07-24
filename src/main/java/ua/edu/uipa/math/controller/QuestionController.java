@@ -29,9 +29,27 @@ public class QuestionController {
     }
 
     @PostMapping
-     public ResponseEntity<?> postQuestion(@Validated @RequestBody Question question) {
+    public ResponseEntity<?> postQuestion(@Validated @RequestBody Question question) {
         question.timestamp();
         Question response = questionRepo.save(question);
         return ResponseEntity.ok().body(response);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateQuestion(@PathVariable Long id, @Validated @RequestBody Question question) {
+        Optional<Question> oldQuestion = questionRepo.findById(id);
+        oldQuestion.orElseThrow(() -> new NotFoundException("Can't update question with id=" + id + " because it not found!"));
+        question.setId(id);
+        question.setCreated(oldQuestion.get().getCreated());
+        Question response = questionRepo.save(question);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteQuestionById(@PathVariable Long id) {
+        Optional<Question> question = questionRepo.findById(id);
+        question.orElseThrow(() -> new NotFoundException("Can't delete question with id=" + id + " because it not found!"));
+        questionRepo.deleteById(id);
+        return ResponseEntity.ok().body(question);
     }
 }
