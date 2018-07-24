@@ -8,6 +8,8 @@ import java.util.List;
 
 public class PropertyFilter {
 
+    private static final String ALL_FIELDS_PATTERN = "**";
+
     public static <T> void includeAllFields(List<T> objects, String[] includeFields) {
         for (Object object : objects) {
             includeFields(object, includeFields);
@@ -48,6 +50,6 @@ public class PropertyFilter {
     }
 
     private static boolean isAllFields(String[] fields) {
-        return fields.length == 1 && fields[0].equals("**");
+        return fields.length == 1 && fields[0].equals(ALL_FIELDS_PATTERN);
     }
 }
