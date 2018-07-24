@@ -21,16 +21,18 @@ public class PropertyFilter {
     }
 
     private static void includeFields(Object object, String[] includeFields) {
-        for (Field field : object.getClass().getDeclaredFields()) {
-            if (!Arrays.asList(includeFields).contains(field.getName())) {
-                clearValue(object, field);
+        if (!isAllFields(includeFields)) {
+            for (Field field : object.getClass().getDeclaredFields()) {
+                if (!Arrays.asList(includeFields).contains(field.getName())) {
+                    clearValue(object, field);
+                }
             }
         }
     }
 
     private static void excludeFields(Object object, String[] excludeFields) {
         for (Field field : object.getClass().getDeclaredFields()) {
-            if (Arrays.asList(excludeFields).contains(field.getName())) {
+            if (Arrays.asList(excludeFields).contains(field.getName()) || isAllFields(excludeFields)) {
                 clearValue(object, field);
             }
         }
@@ -43,5 +45,9 @@ public class PropertyFilter {
         } catch (IllegalAccessException e) {
             throw new PropertyChangeException("Can't change property with name=" + field.getName() + "!");
         }
+    }
+
+    private static boolean isAllFields(String[] fields) {
+        return fields.length == 1 && fields[0].equals("**");
     }
 }
