@@ -4,7 +4,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ua.edu.uipa.math.exception.FieldNotFoundException;
+import ua.edu.uipa.math.exception.PropertyChangeException;
 import ua.edu.uipa.math.exception.ResourceNotFoundException;
 import ua.edu.uipa.math.model.Error;
 
@@ -27,10 +27,10 @@ public class ErrorController {
         return ResponseEntity.badRequest().body(error);
     }
 
-    @ExceptionHandler(FieldNotFoundException.class)
-    public ResponseEntity<?> handleFieldNotFoundException(FieldNotFoundException exception) {
+    @ExceptionHandler(PropertyChangeException.class)
+    public ResponseEntity<?> handlePropertyChangeException(PropertyChangeException exception) {
         Error error = new Error()
-                .code("FieldNotFoundException")
+                .code("PropertyChangeException")
                 .message(exception.getMessage());
         return ResponseEntity.badRequest().body(error);
     }

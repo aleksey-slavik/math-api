@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import ua.edu.uipa.math.exception.ResourceNotFoundException;
 import ua.edu.uipa.math.model.Question;
 import ua.edu.uipa.math.repository.QuestionRepo;
+import ua.edu.uipa.math.util.PropertyFilter;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,8 +35,10 @@ public class QuestionController {
             @RequestParam(defaultValue = "0") int offset,
             @RequestParam(defaultValue = "20") int limit,
             @RequestParam(defaultValue = "+id") String[] sort,
-            @RequestParam(defaultValue = "id,title,description,timestamp") String[] fields) {
-        return ResponseEntity.ok().body();
+            @RequestParam(defaultValue = "id,title,description,created") String[] fields) {
+        List<Question> questions = (List<Question>) questionRepo.findAll();
+        PropertyFilter.includeAllFields(questions, fields);
+        return ResponseEntity.ok().body(questions);
     }
 
     @PostMapping

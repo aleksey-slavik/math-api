@@ -1,10 +1,10 @@
 package ua.edu.uipa.math.exception;
 
-public class FieldNotFoundException extends RuntimeException {
+public class PropertyChangeException extends RuntimeException {
 
     private String message;
 
-    public FieldNotFoundException(String message) {
+    public PropertyChangeException(String message) {
         this.message = message;
     }
 
