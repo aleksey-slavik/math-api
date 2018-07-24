@@ -32,6 +32,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.liquibase:liquibase-core')
     compile('org.postgresql:postgresql')
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
 
     runtime('org.liquibase:liquibase-core')
     runtime('org.postgresql:postgresql')

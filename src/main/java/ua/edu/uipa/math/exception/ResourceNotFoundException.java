@@ -1,10 +1,10 @@
 package ua.edu.uipa.math.exception;
 
-public class NotFoundException extends RuntimeException {
+public class ResourceNotFoundException extends RuntimeException {
 
     private String message;
 
-    public NotFoundException(String message) {
+    public ResourceNotFoundException(String message) {
         this.message = message;
     }
 
