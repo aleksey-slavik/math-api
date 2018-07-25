@@ -33,7 +33,7 @@ public class QuestionController {
 
     @GetMapping
     public ResponseEntity<?> getQuestionList(
-            @RequestParam(defaultValue = "0") int offset,
+            @RequestParam(defaultValue = "1") int offset,
             @RequestParam(defaultValue = "20") int limit,
             @RequestParam(defaultValue = "+id") String[] orderBy,
             @RequestParam(defaultValue = "id,title,description,created") String[] fields) {
