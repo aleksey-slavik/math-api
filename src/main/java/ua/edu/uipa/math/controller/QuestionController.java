@@ -16,12 +16,8 @@ import java.util.Optional;
 @RequestMapping(value = "api/v1/questions")
 public class QuestionController {
 
-    private final QuestionRepo questionRepo;
-
     @Autowired
-    public QuestionController(QuestionRepo questionRepo) {
-        this.questionRepo = questionRepo;
-    }
+    private QuestionRepo questionRepo;
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getQuestionById(@PathVariable Long id) {
@@ -34,9 +30,9 @@ public class QuestionController {
     public ResponseEntity<?> getQuestionList(
             @RequestParam(defaultValue = "0") int offset,
             @RequestParam(defaultValue = "20") int limit,
-            @RequestParam(defaultValue = "+id") String[] sort,
+            @RequestParam(defaultValue = "+id") String[] sortBy,
             @RequestParam(defaultValue = "id,title,description,created") String[] fields) {
-        List<Question> questions = (List<Question>) questionRepo.findAll();
+        List<Question> questions = questionRepo.findAllWithSortQuery(offset, limit, sortBy);
         PropertyFilter.includeAllFields(questions, fields);
         return ResponseEntity.ok().body(questions);
     }
