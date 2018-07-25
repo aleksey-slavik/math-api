@@ -9,6 +9,11 @@ import ua.edu.uipa.math.util.QueryHelper;
 
 import java.util.List;
 
+/**
+ * Additional DAO method implementation.
+ *
+ * @author oleksii.slavik
+ */
 @Component
 public class QuestionDaoImpl implements QuestionDaoCustom {
 
@@ -19,6 +24,7 @@ public class QuestionDaoImpl implements QuestionDaoCustom {
         this.query = query;
     }
 
+    /** {@inheritDoc} */
     @Override
     public List<Question> findAllByCriteria(Criteria criteria) {
         return query.findAllByCriteria(criteria, Question.class);

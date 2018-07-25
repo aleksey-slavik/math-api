@@ -10,12 +10,25 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+/**
+ * Contains methods for get data from DB
+ *
+ * @author oleksii.slavik
+ */
 @Service
 public class QueryHelper {
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Find all entities, which are corresponds to {@link Criteria}
+     *
+     * @param criteria search criteria data
+     * @param clazz    class of object
+     * @param <T>      type of entity
+     * @return list of entities
+     */
     public <T> List<T> findAllByCriteria(Criteria criteria, Class<T> clazz) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(clazz);

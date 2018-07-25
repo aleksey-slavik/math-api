@@ -13,10 +13,18 @@ import ua.edu.uipa.math.util.Criteria;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Operations with questions.
+ *
+ * @author oleksii.slavik
+ */
 @RestController
 @RequestMapping(value = "api/v1/questions")
 public class QuestionController {
 
+    /**
+     * Dao object for questions
+     */
     private final QuestionDao questionDao;
 
     @Autowired
@@ -24,6 +32,13 @@ public class QuestionController {
         this.questionDao = questionDao;
     }
 
+    /**
+     * API endpoint to get question by id
+     *
+     * @param id id of question
+     * @return question with requested id
+     * @throws ResourceNotFoundException throws when question with requested id not found
+     */
     @GetMapping("/{id}")
     public ResponseEntity<?> getQuestionById(@PathVariable Long id) {
         Optional<Question> question = questionDao.findById(id);
@@ -31,6 +46,15 @@ public class QuestionController {
         return ResponseEntity.ok().body(question);
     }
 
+    /**
+     * API endpoint to get list of question
+     *
+     * @param offset  position of the first result to retrieve
+     * @param limit   maximum number of results to retrieve
+     * @param orderBy array of attribute names with order direction in first character('+' or '-')
+     * @param fields  array of attribute names, which are must be in response
+     * @return list of questions
+     */
     @GetMapping
     public ResponseEntity<?> getQuestionList(
             @RequestParam(defaultValue = "0") int offset,
@@ -48,6 +72,12 @@ public class QuestionController {
         return ResponseEntity.ok().body(questions);
     }
 
+    /**
+     * API endpoint to create new question
+     *
+     * @param question body of question
+     * @return created question
+     */
     @PostMapping
     public ResponseEntity<?> postQuestion(@Validated @RequestBody Question question) {
         question.timestamp();
@@ -55,6 +85,14 @@ public class QuestionController {
         return ResponseEntity.ok().body(response);
     }
 
+    /**
+     * API endpoint to update existed question
+     *
+     * @param id       id of question
+     * @param question body of question
+     * @return updated question
+     * @throws ResourceNotFoundException throws when question with requested id not found
+     */
     @PutMapping("/{id}")
     public ResponseEntity<?> updateQuestion(@PathVariable Long id, @Validated @RequestBody Question question) {
         Optional<Question> oldQuestion = questionDao.findById(id);
@@ -65,6 +103,13 @@ public class QuestionController {
         return ResponseEntity.ok().body(response);
     }
 
+    /**
+     * API endpoint to delete existed question
+     *
+     * @param id id of question
+     * @return deleted question
+     * @throws ResourceNotFoundException throws when question with requested id not found
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteQuestionById(@PathVariable Long id) {
         Optional<Question> question = questionDao.findById(id);

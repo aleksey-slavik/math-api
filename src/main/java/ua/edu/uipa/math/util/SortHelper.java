@@ -6,12 +6,32 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains methods for create {@link Order} list for queries
+ *
+ * @author oleksii.slavik
+ */
 public class SortHelper {
 
+    /**
+     * ascending pattern
+     */
     private static final char ASCENDING_PATTERN = '+';
 
+    /**
+     * descending pattern
+     */
     private static final char DESCENDING_PATTERN = '-';
 
+    /**
+     * Create {@link Order} list for queries
+     *
+     * @param builder {@link CriteriaBuilder} object of query
+     * @param from    {@link Root} object of query
+     * @param fields  array of properties for sorting
+     * @param <T>     type of entity
+     * @return list of {@link Order} for query
+     */
     public static <T> List<Order> createOrderByList(CriteriaBuilder builder, Root<T> from, String[] fields) {
         List<Order> orders = new ArrayList<>();
 
@@ -26,6 +46,12 @@ public class SortHelper {
         return orders;
     }
 
+    /**
+     * Check sorting direction of given property
+     *
+     * @param field property
+     * @return true, if property have ascending direction, false, in otherwise
+     */
     private static boolean isAscending(String field) {
         switch (field.charAt(0)) {
             case ASCENDING_PATTERN:
@@ -37,6 +63,13 @@ public class SortHelper {
         }
     }
 
+    /**
+     * Parse attribute name.
+     * Remove sorting direction from first position if it present.
+     *
+     * @param field property
+     * @return attribute name
+     */
     private static String getAttributeName(String field) {
         if (field.charAt(0) == ASCENDING_PATTERN || field.charAt(0) == DESCENDING_PATTERN) {
             return field.substring(1);
