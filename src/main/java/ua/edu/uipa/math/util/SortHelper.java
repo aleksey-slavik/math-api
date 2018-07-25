@@ -1,7 +1,6 @@
 package ua.edu.uipa.math.util;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
@@ -13,11 +12,11 @@ public class SortHelper {
 
     private static final char DESCENDING_PATTERN = '-';
 
-    public static <T> List<Order> createOrderByList(CriteriaBuilder builder, CriteriaQuery<T> query, Root<T> from, String[] fields) {
+    public static <T> List<Order> createOrderByList(CriteriaBuilder builder, Root<T> from, String[] fields) {
         List<Order> orders = new ArrayList<>();
 
         for (String field : fields) {
-            if (SortHelper.isAscending(field)) {
+            if (isAscending(field)) {
                 orders.add(builder.asc(from.get(getAttributeName(field))));
             } else {
                 orders.add(builder.desc(from.get(getAttributeName(field))));
@@ -34,7 +33,7 @@ public class SortHelper {
             case DESCENDING_PATTERN:
                 return false;
             default:
-                return false;
+                return true;
         }
     }
 

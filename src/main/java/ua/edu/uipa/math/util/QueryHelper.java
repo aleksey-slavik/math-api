@@ -21,7 +21,7 @@ public class QueryHelper {
         CriteriaQuery<T> query = builder.createQuery(clazz);
         Root<T> root = query.from(clazz);
         query.select(root);
-        query.orderBy(SortHelper.createOrderByList(builder, query, root, criteria.getOrderBy()));
+        query.orderBy(SortHelper.createOrderByList(builder, root, criteria.getOrderBy()));
         TypedQuery<T> typedQuery = entityManager.createQuery(query);
         typedQuery.setFirstResult(criteria.getOffset());
         typedQuery.setMaxResults(criteria.getLimit());
