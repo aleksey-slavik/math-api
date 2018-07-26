@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
--- changeset oleksii.slavik:1
+-- changeset add questions:1
 
 CREATE TABLE IF NOT EXISTS question (
   id SERIAL PRIMARY KEY,

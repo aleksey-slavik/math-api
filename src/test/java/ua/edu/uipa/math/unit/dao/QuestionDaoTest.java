@@ -28,7 +28,6 @@ public class QuestionDaoTest {
 
     @Test
     public void testFindAllByCriteria() {
-        //Question request = readFromResources("messages/question.json", Question.class);
         List<Question> expected = new QuestionBuilder().list(3);
         Criteria criteria = defaultCriteria();
         when(questionDao.findAllByCriteria(any(Criteria.class))).thenReturn(expected);

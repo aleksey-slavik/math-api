@@ -20,12 +20,13 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "question")
-public final class Question {
+public class Question {
 
     /**
      * question id
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
 

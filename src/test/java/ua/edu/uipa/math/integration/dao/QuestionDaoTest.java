@@ -8,8 +8,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 import ua.edu.uipa.math.dao.QuestionDao;
 import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.utils.Workflow;
 import ua.edu.uipa.math.utils.builder.QuestionBuilder;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -27,8 +29,22 @@ public class QuestionDaoTest {
     @Test
     public void testFindById() {
         Question question = new QuestionBuilder().build();
+        question.setId(null);
         entityManager.persist(question);
         Optional<Question> response = questionDao.findById(question.getId());
         assertEquals(question, response.get());
+    }
+
+    @Test
+    public void testAllByCriteria() {
+        List<Question> questions = new QuestionBuilder().list(5);
+
+        for (Question question : questions) {
+            question.setId(null);
+            entityManager.persist(question);
+        }
+
+        List<Question> response = questionDao.findAllByCriteria(Workflow.defaultCriteria());
+        assertEquals(questions, response);
     }
 }
