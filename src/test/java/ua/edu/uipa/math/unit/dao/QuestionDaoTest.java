@@ -16,15 +16,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static ua.edu.uipa.math.utils.Workflow.defaultCriteria;
 
-/*@RunWith(SpringRunner.class)
-@DataJpaTest*/
 public class QuestionDaoTest {
-
-    /*@Autowired
-    private TestEntityManager entityManager;
-
-    @Autowired
-    private QuestionDao questionDao;*/
 
     @Mock
     private QuestionDao questionDao;
@@ -35,7 +27,7 @@ public class QuestionDaoTest {
     }
 
     @Test
-    public void testFindAllByCriteria() throws Exception {
+    public void testFindAllByCriteria() {
         //Question request = readFromResources("messages/question.json", Question.class);
         List<Question> expected = new QuestionBuilder().list(3);
         Criteria criteria = defaultCriteria();
@@ -47,12 +39,4 @@ public class QuestionDaoTest {
         verifyNoMoreInteractions(questionDao);
         assertEquals("Check list of questions", expected, actual);
     }
-
-    /*@Test
-    public void testFindAllByCriteria() {
-        Question question = new QuestionBuilder().build();
-        entityManager.persist(question);
-        Optional<Question> response = questionDao.findById(question.getId());
-        assertEquals(question, response.get());
-    }*/
 }
