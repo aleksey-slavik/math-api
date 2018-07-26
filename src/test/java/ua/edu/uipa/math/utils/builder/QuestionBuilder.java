@@ -13,6 +13,6 @@ public class QuestionBuilder implements Builder<Question> {
         question.setDescription(Generator.nextString(100));
         question.setContacts(Generator.email("test", "mail.com"));
         question.setCreated(Generator.timestamp());
-        return new Question();
+        return question;
     }
 }
