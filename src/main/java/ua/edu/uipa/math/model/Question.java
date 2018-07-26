@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Contains all data access layer (DAL) for Question Service.
@@ -63,24 +64,71 @@ public final class Question {
         created = System.currentTimeMillis();
     }
 
-    /**
-     * @param id question id
-     */
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    /**
-     * @return date of creation of question
-     */
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
+    }
+
     public Long getCreated() {
         return created;
     }
 
-    /**
-     * @param created date of creation of question
-     */
     public void setCreated(Long created) {
         this.created = created;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Question question = (Question) o;
+        return Objects.equals(id, question.id) &&
+                Objects.equals(title, question.title) &&
+                Objects.equals(description, question.description) &&
+                Objects.equals(contacts, question.contacts) &&
+                Objects.equals(created, question.created);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, contacts, created);
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", contacts='" + contacts + '\'' +
+                ", created=" + created +
+                '}';
     }
 }
