@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.unit.api;
+package ua.edu.uipa.math.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;

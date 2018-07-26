@@ -1,10 +1,9 @@
-package ua.edu.uipa.math.unit.dao;
+package ua.edu.uipa.math.dao;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import ua.edu.uipa.math.dao.QuestionDao;
 import ua.edu.uipa.math.model.Question;
 import ua.edu.uipa.math.util.Criteria;
 import ua.edu.uipa.math.utils.builder.QuestionBuilder;
