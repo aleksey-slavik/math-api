@@ -1,7 +1,7 @@
 package ua.edu.uipa.math.util;
 
 import org.junit.Test;
-import ua.edu.uipa.math.lib.Generator;
+import ua.edu.uipa.math.lib.random.Generator;
 import ua.edu.uipa.math.lib.builder.TestEntityBuilder;
 import ua.edu.uipa.math.lib.entity.TestEntity;
 

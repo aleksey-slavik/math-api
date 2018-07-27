@@ -1,12 +1,12 @@
-package ua.edu.uipa.math.util;
+package ua.edu.uipa.math.util.query;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import ua.edu.uipa.math.lib.Generator;
 import ua.edu.uipa.math.lib.builder.TestEntityBuilder;
 import ua.edu.uipa.math.lib.entity.TestEntity;
+import ua.edu.uipa.math.lib.random.Generator;
 
 import java.util.List;
 

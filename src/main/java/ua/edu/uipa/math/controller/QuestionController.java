@@ -8,7 +8,7 @@ import ua.edu.uipa.math.exception.ResourceNotFoundException;
 import ua.edu.uipa.math.model.Question;
 import ua.edu.uipa.math.dao.QuestionDao;
 import ua.edu.uipa.math.util.PropertyFilter;
-import ua.edu.uipa.math.util.Criteria;
+import ua.edu.uipa.math.util.query.Criteria;
 
 import java.util.List;
 import java.util.Optional;

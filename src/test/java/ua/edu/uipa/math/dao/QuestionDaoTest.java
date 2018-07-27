@@ -4,9 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import ua.edu.uipa.math.lib.Generator;
+import ua.edu.uipa.math.lib.random.Generator;
 import ua.edu.uipa.math.model.Question;
-import ua.edu.uipa.math.util.Criteria;
+import ua.edu.uipa.math.util.query.Criteria;
 import ua.edu.uipa.math.lib.builder.QuestionBuilder;
 
 import java.util.List;

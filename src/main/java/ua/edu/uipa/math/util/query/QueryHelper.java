@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.util;
+package ua.edu.uipa.math.util.query;
 
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,7 @@ public class QueryHelper {
         CriteriaQuery<T> query = builder.createQuery(clazz);
         Root<T> root = query.from(clazz);
         query.select(root);
-        query.orderBy(SortHelper.createOrderByList(builder, root, criteria.getOrderBy()));
+        query.orderBy(OrderHelper.createOrderByList(builder, root, criteria.getOrderBy()));
         TypedQuery<T> typedQuery = entityManager.createQuery(query);
         typedQuery.setFirstResult(criteria.getOffset());
         typedQuery.setMaxResults(criteria.getLimit());

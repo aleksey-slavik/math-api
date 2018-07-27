@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.util;
+package ua.edu.uipa.math.util.query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Order;
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author oleksii.slavik
  */
-public class SortHelper {
+public class OrderHelper {
 
     /**
      * ascending pattern
@@ -52,7 +52,7 @@ public class SortHelper {
      * @param field property
      * @return true, if property have ascending direction, false, in otherwise
      */
-    private static boolean isAscending(String field) {
+    public static boolean isAscending(String field) {
         switch (field.charAt(0)) {
             case ASCENDING_PATTERN:
                 return true;
@@ -70,7 +70,7 @@ public class SortHelper {
      * @param field property
      * @return attribute name
      */
-    private static String getAttributeName(String field) {
+    public static String getAttributeName(String field) {
         if (field.charAt(0) == ASCENDING_PATTERN || field.charAt(0) == DESCENDING_PATTERN) {
             return field.substring(1);
         } else {

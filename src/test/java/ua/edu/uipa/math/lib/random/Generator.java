@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.lib;
+package ua.edu.uipa.math.lib.random;
 
 import java.util.Random;
 

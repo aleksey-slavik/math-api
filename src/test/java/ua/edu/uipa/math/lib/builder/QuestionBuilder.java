@@ -1,7 +1,7 @@
 package ua.edu.uipa.math.lib.builder;
 
 import ua.edu.uipa.math.model.Question;
-import ua.edu.uipa.math.lib.Generator;
+import ua.edu.uipa.math.lib.random.Generator;
 
 /**
  * Implementation of {@link Builder} for {@link Question} entity

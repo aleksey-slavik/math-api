@@ -1,7 +1,7 @@
 package ua.edu.uipa.math.lib;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ua.edu.uipa.math.util.Criteria;
+import ua.edu.uipa.math.util.query.Criteria;
 
 import java.io.File;
 import java.io.IOException;

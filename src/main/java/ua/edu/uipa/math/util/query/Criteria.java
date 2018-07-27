@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.util;
+package ua.edu.uipa.math.util.query;
 
 import java.util.ArrayList;
 import java.util.HashMap;

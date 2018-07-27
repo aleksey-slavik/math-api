@@ -1,6 +1,6 @@
 package ua.edu.uipa.math.lib.builder;
 
-import ua.edu.uipa.math.lib.Generator;
+import ua.edu.uipa.math.lib.random.Generator;
 import ua.edu.uipa.math.lib.entity.TestEntity;
 
 /**
