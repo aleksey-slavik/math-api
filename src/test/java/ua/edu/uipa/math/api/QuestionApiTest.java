@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ua.edu.uipa.math.controller.QuestionController;
 import ua.edu.uipa.math.dao.QuestionDao;
 import ua.edu.uipa.math.model.Question;
-import ua.edu.uipa.math.utils.builder.QuestionBuilder;
+import ua.edu.uipa.math.lib.builder.QuestionBuilder;
 
 import java.util.Optional;
 
@@ -23,6 +23,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Contains tests for question controller
+ *
+ * @author oleksii.slavik
+ */
 public class QuestionApiTest {
 
     private MockMvc mockMvc;
@@ -39,6 +44,9 @@ public class QuestionApiTest {
         mockMvc = MockMvcBuilders.standaloneSetup(questionController).build();
     }
 
+    /**
+     * Test find question by id
+     */
     @Test
     public void testGetQuestionById() throws Exception {
         Question question = new QuestionBuilder().build();

@@ -17,10 +17,16 @@ import java.util.List;
 @Component
 public class QuestionDaoImpl implements QuestionDaoCustom {
 
-    @Autowired(required = false)
-    private QueryHelper queryHelper;
+    private final QueryHelper queryHelper;
 
-    /** {@inheritDoc} */
+    @Autowired
+    public QuestionDaoImpl(QueryHelper queryHelper) {
+        this.queryHelper = queryHelper;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Question> findAllByCriteria(Criteria criteria) {
         return queryHelper.findAllByCriteria(criteria, Question.class);

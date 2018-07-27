@@ -6,15 +6,20 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import ua.edu.uipa.math.model.Question;
 import ua.edu.uipa.math.util.Criteria;
-import ua.edu.uipa.math.utils.builder.QuestionBuilder;
+import ua.edu.uipa.math.lib.builder.QuestionBuilder;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static ua.edu.uipa.math.utils.Workflow.defaultCriteria;
+import static ua.edu.uipa.math.lib.Workflow.defaultCriteria;
 
+/**
+ * Contains tests for custom {@link QuestionDao} methods
+ *
+ * @author oleksii.slavik
+ */
 public class QuestionDaoTest {
 
     @Mock
@@ -25,6 +30,9 @@ public class QuestionDaoTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    /**
+     * Test find all questions by {@link Criteria}
+     */
     @Test
     public void testFindAllByCriteria() {
         List<Question> expected = new QuestionBuilder().list(3);

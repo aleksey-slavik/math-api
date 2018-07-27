@@ -50,7 +50,7 @@ public class PropertyFilter {
      * @param object        given object
      * @param includeFields array of properties
      */
-    private static void includeFields(Object object, String[] includeFields) {
+    public static void includeFields(Object object, String[] includeFields) {
         if (!isAllFields(includeFields)) {
             for (Field field : object.getClass().getDeclaredFields()) {
                 if (!Arrays.asList(includeFields).contains(field.getName())) {
@@ -66,7 +66,7 @@ public class PropertyFilter {
      * @param object        given object
      * @param excludeFields array of properties
      */
-    private static void excludeFields(Object object, String[] excludeFields) {
+    public static void excludeFields(Object object, String[] excludeFields) {
         for (Field field : object.getClass().getDeclaredFields()) {
             if (Arrays.asList(excludeFields).contains(field.getName()) || isAllFields(excludeFields)) {
                 clearValue(object, field);
