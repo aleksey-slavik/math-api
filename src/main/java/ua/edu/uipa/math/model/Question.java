@@ -40,7 +40,7 @@ public class Question {
     /**
      * question description
      */
-    @Length(max = 1000)
+    @Length(max = 10000)
     @Column(name = "description", nullable = false)
     private String description;
 
