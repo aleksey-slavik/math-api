@@ -2,7 +2,8 @@ package ua.edu.uipa.math.util;
 
 import org.junit.Test;
 import ua.edu.uipa.math.lib.Generator;
-import ua.edu.uipa.math.lib.builder.Builder;
+import ua.edu.uipa.math.lib.builder.TestEntityBuilder;
+import ua.edu.uipa.math.lib.entity.TestEntity;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -22,37 +23,37 @@ public class PropertyFilterTest {
     private static final String[] ALL_FIELDS_ARRAY_PATTERN = new String[]{"**"};
 
     /**
-     * array of all fields of {@link TestObject}
+     * array of all fields of {@link TestEntity}
      */
     private static final String[] ALL_FIELDS_ARRAY = new String[]{"intField", "longField", "stringField"};
 
     /**
-     * array of {@link Integer} and {@link Long} fields of {@link TestObject}
+     * array of {@link Integer} and {@link Long} fields of {@link TestEntity}
      */
     private static final String[] INT_LONG_ARRAY = new String[]{"intField", "longField"};
 
     /**
-     * array of {@link Integer} and {@link String} fields of {@link TestObject}
+     * array of {@link Integer} and {@link String} fields of {@link TestEntity}
      */
     private static final String[] INT_STRING_ARRAY = new String[]{"intField", "stringField"};
 
     /**
-     * array of {@link Long} and {@link String} fields of {@link TestObject}
+     * array of {@link Long} and {@link String} fields of {@link TestEntity}
      */
     private static final String[] LONG_STRING_ARRAY = new String[]{"longField", "stringField"};
 
     /**
-     * array of only {@link Integer} field of {@link TestObject}
+     * array of only {@link Integer} field of {@link TestEntity}
      */
     private static final String[] INT_ARRAY = new String[]{"intField"};
 
     /**
-     * array of only {@link Long} field of {@link TestObject}
+     * array of only {@link Long} field of {@link TestEntity}
      */
     private static final String[] LONG_ARRAY = new String[]{"longField"};
 
     /**
-     * array of only {@link String} field of {@link TestObject}
+     * array of only {@link String} field of {@link TestEntity}
      */
     private static final String[] STRING_ARRAY = new String[]{"stringField"};
 
@@ -62,12 +63,12 @@ public class PropertyFilterTest {
     private static final String[] EMPTY_ARRAY = new String[]{};
 
     /**
-     * {@link TestObjectBuilder} for creating entities and lists of entities
+     * {@link TestEntityBuilder} for creating entities and lists of entities
      */
-    private TestObjectBuilder builder = new TestObjectBuilder();
+    private TestEntityBuilder builder = new TestEntityBuilder();
 
     /**
-     * Test include properties to {@link TestObject}
+     * Test include properties to {@link TestEntity}
      */
     @Test
     public void testIncludeFields() throws Exception {
@@ -83,7 +84,7 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Test exclude properties from {@link TestObject}
+     * Test exclude properties from {@link TestEntity}
      */
     @Test
     public void testExcludeFields() throws Exception {
@@ -99,7 +100,7 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Test include properties to list of {@link TestObject}
+     * Test include properties to list of {@link TestEntity}
      */
     @Test
     public void testIncludeFieldsInArray() throws Exception {
@@ -115,7 +116,7 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Test exclude properties from list of {@link TestObject}
+     * Test exclude properties from list of {@link TestEntity}
      */
     @Test
     public void testExcludeFieldsInArray() throws Exception {
@@ -131,23 +132,23 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Check include properties to list of {@link TestObject}
+     * Check include properties to list of {@link TestEntity}
      *
-     * @param includes array of properties, which need to include
+     * @param includes         array of properties, which need to include
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
      */
-    private void assertIncludeFieldsInArray(String[] includes,  String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
-        List<TestObject> objects = builder.list(Generator.nextInt(1, 10));
+    private void assertIncludeFieldsInArray(String[] includes, String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
+        List<TestEntity> objects = builder.list(Generator.nextInt(1, 10));
         PropertyFilter.includeAllFields(objects, includes);
 
-        for (TestObject object : objects) {
+        for (TestEntity object : objects) {
             assertObjectFields(object, expectedIncludes, expectedExcludes);
         }
     }
 
     /**
-     * Check include properties to list of {@link TestObject}
+     * Check include properties to list of {@link TestEntity}
      *
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
@@ -157,23 +158,23 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Check exclude properties from list of {@link TestObject}
+     * Check exclude properties from list of {@link TestEntity}
      *
-     * @param excludes array of properties, which need to exclude
+     * @param excludes         array of properties, which need to exclude
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
      */
-    private void assertExcludeFieldsInArray(String[] excludes,  String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
-        List<TestObject> objects = builder.list(Generator.nextInt(1, 10));
+    private void assertExcludeFieldsInArray(String[] excludes, String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
+        List<TestEntity> objects = builder.list(Generator.nextInt(1, 10));
         PropertyFilter.excludeAllFields(objects, excludes);
 
-        for (TestObject object : objects) {
+        for (TestEntity object : objects) {
             assertObjectFields(object, expectedIncludes, expectedExcludes);
         }
     }
 
     /**
-     * Check exclude properties from list of {@link TestObject}
+     * Check exclude properties from list of {@link TestEntity}
      *
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
@@ -183,20 +184,20 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Check include properties to {@link TestObject}
+     * Check include properties to {@link TestEntity}
      *
-     * @param includes array of properties, which need to include
+     * @param includes         array of properties, which need to include
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
      */
-    private void assertIncludeFields(String[] includes,  String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
-        TestObject object = builder.build();
+    private void assertIncludeFields(String[] includes, String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
+        TestEntity object = builder.build();
         PropertyFilter.includeFields(object, includes);
         assertObjectFields(object, expectedIncludes, expectedExcludes);
     }
 
     /**
-     * Check include properties to {@link TestObject}
+     * Check include properties to {@link TestEntity}
      *
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
@@ -206,20 +207,20 @@ public class PropertyFilterTest {
     }
 
     /**
-     * Check exclude properties from {@link TestObject}
+     * Check exclude properties from {@link TestEntity}
      *
-     * @param excludes array of properties, which need to exclude
+     * @param excludes         array of properties, which need to exclude
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
      */
-    private void assertExcludeFields(String[] excludes,  String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
-        TestObject object = builder.build();
+    private void assertExcludeFields(String[] excludes, String[] expectedIncludes, String[] expectedExcludes) throws IllegalAccessException {
+        TestEntity object = builder.build();
         PropertyFilter.excludeFields(object, excludes);
         assertObjectFields(object, expectedIncludes, expectedExcludes);
     }
 
     /**
-     * Check exclude properties from {@link TestObject}
+     * Check exclude properties from {@link TestEntity}
      *
      * @param expectedIncludes expected array of included properties
      * @param expectedExcludes expected array of excluded properties
@@ -231,7 +232,7 @@ public class PropertyFilterTest {
     /**
      * Check included and excluded properties in given {@link Object}
      *
-     * @param object given {@link Object}
+     * @param object   given {@link Object}
      * @param includes array of properties, which must be included
      * @param excludes array of properties, which must be excluded
      */
@@ -248,7 +249,7 @@ public class PropertyFilterTest {
     /**
      * Check that given {@link Object} contains not null property with given name
      *
-     * @param object given {@link Object}
+     * @param object   given {@link Object}
      * @param property name of property
      * @return true, if {@link Object} contains not null property, false, in otherwise
      */
@@ -256,34 +257,13 @@ public class PropertyFilterTest {
         Class<?> clazz = object.getClass();
 
         for (Field field : clazz.getDeclaredFields()) {
+            field.setAccessible(true);
+
             if (field.getName().equals(property) && field.get(object) != null) {
                 return true;
             }
         }
 
         return false;
-    }
-
-    /**
-     * Test object
-     */
-    private class TestObject {
-        Integer intField;
-        Long longField;
-        String stringField;
-    }
-
-    /**
-     * Implementation of {@link Builder} for {@link TestObject}
-     */
-    private class TestObjectBuilder implements Builder<TestObject> {
-        @Override
-        public TestObject build() {
-            TestObject testObject = new TestObject();
-            testObject.intField = Generator.nextInt(-10, 10);
-            testObject.longField = Generator.nextLong(-10L, 10L);
-            testObject.stringField = Generator.nextString(10);
-            return testObject;
-        }
     }
 }

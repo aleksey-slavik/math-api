@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import ua.edu.uipa.math.lib.Generator;
 import ua.edu.uipa.math.model.Question;
 import ua.edu.uipa.math.util.Criteria;
 import ua.edu.uipa.math.lib.builder.QuestionBuilder;
@@ -35,7 +36,7 @@ public class QuestionDaoTest {
      */
     @Test
     public void testFindAllByCriteria() {
-        List<Question> expected = new QuestionBuilder().list(3);
+        List<Question> expected = new QuestionBuilder().list(Generator.nextInt(1, 10));
         Criteria criteria = defaultCriteria();
         when(questionDao.findAllByCriteria(any(Criteria.class))).thenReturn(expected);
 
