@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Contains all swagger documentation to {@link ua.edu.uipa.math.controller.QuestionController} operations
+ *
+ * @author oleksii.slavik
  */
 @Api("Operations with questions")
 public interface QuestionDefinition {
