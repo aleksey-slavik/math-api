@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
@@ -33,6 +34,7 @@ public class Question {
     /**
      * question title
      */
+    @NotNull
     @Length(max = 250)
     @Column(name = "title", nullable = false)
     private String title;
@@ -40,6 +42,7 @@ public class Question {
     /**
      * question description
      */
+    @NotNull
     @Length(max = 10000)
     @Column(name = "description", nullable = false)
     private String description;
@@ -47,6 +50,7 @@ public class Question {
     /**
      * contacts of sender
      */
+    @NotNull
     @Length(max = 250)
     @Column(name = "contacts", nullable = false)
     private String contacts;

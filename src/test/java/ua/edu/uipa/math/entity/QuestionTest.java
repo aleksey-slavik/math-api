@@ -38,19 +38,34 @@ public class QuestionTest {
     private static final String CONTACTS = "contacts";
 
     /**
-     * error message for title validation
+     * error message for title length validation
      */
     private static final String TITLE_LENGTH_ERROR = "length must be between 0 and 250";
 
     /**
-     * error message for description validation
+     * error message for title not null validation
+     */
+    private static final String TITLE_NOT_NULL_ERROR = "must not be null";
+
+    /**
+     * error message for description length validation
      */
     private static final String DESCRIPTION_LENGTH_ERROR = "length must be between 0 and 10000";
 
     /**
-     * error message for contacts validation
+     * error message for description not null validation
+     */
+    private static final String DESCRIPTION_NOT_NULL_ERROR = "must not be null";
+
+    /**
+     * error message for contacts length validation
      */
     private static final String CONTACTS_LENGTH_ERROR = "length must be between 0 and 250";
+
+    /**
+     * error message for contacts not null validation
+     */
+    private static final String CONTACTS_NOT_NULL_ERROR = "must not be null";
 
     private static Validator validator;
 
@@ -77,7 +92,9 @@ public class QuestionTest {
      * Test title length validation
      */
     @Test
-    public void testTitleLength() throws Exception {
+    public void testTitleProperty() throws Exception {
+        assertStringLength(0, TITLE, TITLE_NOT_NULL_ERROR);
+
         assertStringLength(1, TITLE, null);
         assertStringLength(18, TITLE, null);
         assertStringLength(175, TITLE, null);
@@ -94,6 +111,8 @@ public class QuestionTest {
      */
     @Test
     public void testDescriptionLength() throws Exception {
+        assertStringLength(0, DESCRIPTION, DESCRIPTION_NOT_NULL_ERROR);
+
         assertStringLength(1, DESCRIPTION, null);
         assertStringLength(18, DESCRIPTION, null);
         assertStringLength(1275, DESCRIPTION, null);
@@ -110,6 +129,8 @@ public class QuestionTest {
      */
     @Test
     public void testContactsLength() throws Exception {
+        assertStringLength(0, CONTACTS, CONTACTS_NOT_NULL_ERROR);
+
         assertStringLength(1, CONTACTS, null);
         assertStringLength(18, CONTACTS, null);
         assertStringLength(175, CONTACTS, null);
@@ -132,7 +153,7 @@ public class QuestionTest {
         Question question = builder.build();
         Field field = question.getClass().getDeclaredField(fieldName);
         field.setAccessible(true);
-        field.set(question, Generator.nextString(length));
+        field.set(question, length < 1 ? null : Generator.nextString(length));
         Set<ConstraintViolation<Question>> violations = validator.validate(question);
 
         if (error == null) {
