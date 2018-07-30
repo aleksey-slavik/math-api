@@ -20,7 +20,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "question")
+@Table(name = "questions")
 public class Question {
 
     /**
