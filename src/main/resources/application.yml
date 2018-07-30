@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://postgres:5432/mathdb"
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog.sql
+    enabled: true
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false

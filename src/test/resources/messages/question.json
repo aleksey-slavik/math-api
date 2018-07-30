@@ -1,0 +1,7 @@
+{
+  "id": 123,
+  "title": "title of test message",
+  "description": "body of test message",
+  "contacts": "test@mail.com",
+  "created": 1532523561949
+}

@@ -1,0 +1,29 @@
+version: '2.2'
+services:
+
+  api:
+    container_name: math-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+          POSTGRES_USER: "root"
+          POSTGRES_PASSWORD: "root"
+          POSTGRES_DB: "mathdb"
+    healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U root -d mathdb"]
+          interval: 10s
+          timeout: 10s
+          retries: 1
