@@ -28,13 +28,16 @@ INSERT INTO languages (code, name) VALUES ('ua', 'Ukrainian');
 -- changeset add users:3
 
 CREATE TABLE IF NOT EXISTS users (
-  username  VARCHAR(100) NOT NULL PRIMARY KEY,
-  password  VARCHAR(100) NOT NULL,
-  is_active BOOLEAN DEFAULT FALSE,
-  updated   BIGINT       NOT NULL
+  username VARCHAR(100) NOT NULL PRIMARY KEY,
+  password VARCHAR(100) NOT NULL,
+  email    VARCHAR(250) NOT NULL,
+  rank     VARCHAR(100) NOT NULL,
+  actived  BOOLEAN DEFAULT FALSE,
+  updated  BIGINT       NOT NULL
 );
 
-INSERT INTO users (username, password, is_active, updated) VALUES ('test.user', 'test.pass', true, 1532616843476);
+INSERT INTO users (username, password, email, rank, actived, updated)
+VALUES ('test.user', 'test.pass', 'test@mail.com', 'HEAD_OF_DEPARTMENT', true, 1532616843476);
 
 -- rollback DROP TABLE users;
 
@@ -45,18 +48,16 @@ CREATE TABLE IF NOT EXISTS users_translations (
   username      VARCHAR(100)   NOT NULL,
   language_code VARCHAR(2)     NOT NULL,
   name          VARCHAR(100)   NOT NULL,
-  position      VARCHAR(100)   NOT NULL,
-  rank          VARCHAR(100)   NOT NULL,
-  degree        VARCHAR(100)   NOT NULL,
+  degree        VARCHAR(250)   NOT NULL,
   education     VARCHAR(1000)  NOT NULL,
   cv            VARCHAR(10000) NOT NULL
 );
 
-INSERT INTO users_translations (username, language_code, name, position, rank, degree, education, cv)
-VALUES ('test.user', 'en', 'Test User', 'Employee', 'Student', 'Master', 'Some Education', 'CV Example');
-INSERT INTO users_translations (username, language_code, name, position, rank, degree, education, cv)
-VALUES ('test.user', 'ru', 'Тестовый пользователь', 'Сотрудник', 'Студент', 'Магистр', 'Некоторое образование', 'Образец CV');
-INSERT INTO users_translations (username, language_code, name, position, rank, degree, education, cv)
-VALUES ('test.user', 'ua', 'Тестовий користувач', 'Співробітник', 'Студент', 'Магістр', 'Деяка освіта', 'Зразок CV');
+INSERT INTO users_translations (username, language_code, name, degree, education, cv)
+VALUES ('test.user', 'en', 'Test User', 'Master', 'Some Education', 'CV Example');
+INSERT INTO users_translations (username, language_code, name, degree, education, cv)
+VALUES ('test.user', 'ru', 'Тестовый пользователь', 'Магистр', 'Некоторое образование', 'Образец CV');
+INSERT INTO users_translations (username, language_code, name, degree, education, cv)
+VALUES ('test.user', 'ua', 'Тестовий користувач', 'Магістр', 'Деяка освіта', 'Зразок CV');
 
 -- rollback DROP TABLE users_translations;

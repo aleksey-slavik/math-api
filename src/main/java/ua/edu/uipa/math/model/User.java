@@ -2,8 +2,6 @@ package ua.edu.uipa.math.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import ua.edu.uipa.math.enums.Degree;
-import ua.edu.uipa.math.enums.Position;
 import ua.edu.uipa.math.enums.Rank;
 
 import javax.persistence.Entity;
@@ -21,11 +19,9 @@ public class User {
 
     private String name;
 
-    private Position position;
-
     private Rank rank;
 
-    private Degree degree;
+    private String degree;
 
     private String education;
 
