@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS languages (
   name VARCHAR(20) NOT NULL
 );
 
-INSERT INTO languages (code, name) VALUES ('en', 'English');
-INSERT INTO languages (code, name) VALUES ('ru', 'Russian');
-INSERT INTO languages (code, name) VALUES ('ua', 'Ukrainian');
+INSERT INTO languages (code, name) VALUES ('EN', 'English');
+INSERT INTO languages (code, name) VALUES ('RU', 'Russian');
+INSERT INTO languages (code, name) VALUES ('UA', 'Ukrainian');
 
 -- rollback DROP TABLE languages;
 
@@ -43,7 +43,7 @@ VALUES ('test.user', 'test.pass', 'test@mail.com', 'HEAD_OF_DEPARTMENT', true, 1
 
 -- changeset add users translations:4
 
-CREATE TABLE IF NOT EXISTS users_translations (
+CREATE TABLE IF NOT EXISTS user_translations (
   id            SERIAL         NOT NULL PRIMARY KEY,
   username      VARCHAR(100)   NOT NULL,
   language_code VARCHAR(2)     NOT NULL,
@@ -53,11 +53,11 @@ CREATE TABLE IF NOT EXISTS users_translations (
   cv            VARCHAR(10000) NOT NULL
 );
 
-INSERT INTO users_translations (username, language_code, name, degree, education, cv)
-VALUES ('test.user', 'en', 'Test User', 'Master', 'Some Education', 'CV Example');
-INSERT INTO users_translations (username, language_code, name, degree, education, cv)
-VALUES ('test.user', 'ru', 'Тестовый пользователь', 'Магистр', 'Некоторое образование', 'Образец CV');
-INSERT INTO users_translations (username, language_code, name, degree, education, cv)
-VALUES ('test.user', 'ua', 'Тестовий користувач', 'Магістр', 'Деяка освіта', 'Зразок CV');
+INSERT INTO user_translations (username, language_code, name, degree, education, cv)
+VALUES ('test.user', 'EN', 'Test User', 'Master', 'Some Education', 'CV Example');
+INSERT INTO user_translations (username, language_code, name, degree, education, cv)
+VALUES ('test.user', 'RU', 'Тестовый пользователь', 'Магистр', 'Некоторое образование', 'Образец CV');
+INSERT INTO user_translations (username, language_code, name, degree, education, cv)
+VALUES ('test.user', 'UA', 'Тестовий користувач', 'Магістр', 'Деяка освіта', 'Зразок CV');
 
 -- rollback DROP TABLE users_translations;
