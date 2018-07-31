@@ -13,6 +13,7 @@ import javax.validation.constraints.Pattern;
 @Table(name = "users")
 public class User {
 
+    @Id
     @NotNull
     @Length(max = 100)
     @Column(name = "username", nullable = false)
@@ -31,6 +32,26 @@ public class User {
     @Length(max = 250)
     @Column(name = "email", nullable = false)
     private String email;
+
+    @NotNull
+    @Length(max = 100)
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @NotNull
+    @Length(max = 250)
+    @Column(name = "degree", nullable = false)
+    private String degree;
+
+    @NotNull
+    @Length(max = 1000)
+    @Column(name = "education", nullable = false)
+    private String education;
+
+    @NotNull
+    @Length(max = 10000)
+    @Column(name = "cv", nullable = false)
+    private String cv;
 
     @NotNull
     @Column(name = "activated")
@@ -71,7 +92,39 @@ public class User {
         this.email = email;
     }
 
-    public Boolean isActive() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getCv() {
+        return cv;
+    }
+
+    public void setCv(String cv) {
+        this.cv = cv;
+    }
+
+    public Boolean getActive() {
         return isActive;
     }
 

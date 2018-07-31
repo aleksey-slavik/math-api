@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.uipa.math.dao.UserDao;
 import ua.edu.uipa.math.enums.Language;
-import ua.edu.uipa.math.model.Employee;
+import ua.edu.uipa.math.model.User;
 
 @RestController
 @RequestMapping("api/v1/users")
@@ -20,7 +20,7 @@ public class UserController {
 
     @GetMapping("/{username}")
     public ResponseEntity<?> getQuestionById(@PathVariable String username, @RequestParam(defaultValue = "EN") Language language) {
-        Employee user = userDao.findEmployeeByUsername(username, language);
+        User user = userDao.findUserByUsername(username, String.valueOf(language));
         return ResponseEntity.ok().body(user);
     }
 }
