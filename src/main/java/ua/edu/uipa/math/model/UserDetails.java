@@ -2,24 +2,24 @@ package ua.edu.uipa.math.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import ua.edu.uipa.math.enums.Language;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
 @Table(name = "user_translations")
-public class UserData {
+public class UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
-    private Long id;
+    @EmbeddedId
+    private UserDetailsId primaryKey;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "language_code", nullable = false)
-    private Language language;
+    @Valid
+    @MapsId("username")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private User user;
 
     @NotNull
     @Length(max = 100)
@@ -41,20 +41,20 @@ public class UserData {
     @Column(name = "cv", nullable = false)
     private String cv;
 
-    public Long getId() {
-        return id;
+    public UserDetailsId getPrimaryKey() {
+        return primaryKey;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPrimaryKey(UserDetailsId primaryKey) {
+        this.primaryKey = primaryKey;
     }
 
-    public Language getLanguage() {
-        return language;
+    public User getUser() {
+        return user;
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {

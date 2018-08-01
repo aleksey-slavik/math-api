@@ -16,7 +16,7 @@ public class User {
     @Id
     @NotNull
     @Length(max = 100)
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @NotNull
@@ -28,34 +28,14 @@ public class User {
     @Column(name = "rank", nullable = false)
     private Rank rank;
 
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message = "email is not valid")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message = "Email is not valid")
     @Length(max = 250)
     @Column(name = "email", nullable = false)
     private String email;
 
     @NotNull
-    @Length(max = 100)
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @NotNull
-    @Length(max = 250)
-    @Column(name = "degree", nullable = false)
-    private String degree;
-
-    @NotNull
-    @Length(max = 1000)
-    @Column(name = "education", nullable = false)
-    private String education;
-
-    @NotNull
-    @Length(max = 10000)
-    @Column(name = "cv", nullable = false)
-    private String cv;
-
-    @NotNull
     @Column(name = "activated")
-    private Boolean isActive;
+    private Boolean activated;
 
     @Column(name = "updated", nullable = false)
     private Long updated;
@@ -92,44 +72,12 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public Boolean getActivated() {
+        return activated;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDegree() {
-        return degree;
-    }
-
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public String getCv() {
-        return cv;
-    }
-
-    public void setCv(String cv) {
-        this.cv = cv;
-    }
-
-    public Boolean getActive() {
-        return isActive;
-    }
-
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
     }
 
     public Long getUpdated() {
