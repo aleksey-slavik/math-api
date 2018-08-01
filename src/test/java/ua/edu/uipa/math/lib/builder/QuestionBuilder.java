@@ -1,6 +1,6 @@
 package ua.edu.uipa.math.lib.builder;
 
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 import ua.edu.uipa.math.lib.random.Generator;
 
 /**

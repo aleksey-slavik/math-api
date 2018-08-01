@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.model;
+package ua.edu.uipa.math.model.error;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

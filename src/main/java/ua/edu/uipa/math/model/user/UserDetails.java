@@ -1,25 +1,28 @@
-package ua.edu.uipa.math.model;
+package ua.edu.uipa.math.model.user;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import ua.edu.uipa.math.enums.Language;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
+@IdClass(UserDetailsId.class)
 @Table(name = "user_translations")
 public class UserDetails {
 
-    @EmbeddedId
-    private UserDetailsId primaryKey;
+    @Id
+    @NotNull
+    @Length(max = 100)
+    @Column(name = "username", nullable = false)
+    private String username;
 
-    @Valid
-    @MapsId("username")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "username", referencedColumnName = "username")
-    private User user;
+    @Id
+    @Enumerated(EnumType.STRING)
+    @Column(name = "language_code", nullable = false)
+    private Language languageCode;
 
     @NotNull
     @Length(max = 100)
@@ -41,20 +44,20 @@ public class UserDetails {
     @Column(name = "cv", nullable = false)
     private String cv;
 
-    public UserDetailsId getPrimaryKey() {
-        return primaryKey;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPrimaryKey(UserDetailsId primaryKey) {
-        this.primaryKey = primaryKey;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public User getUser() {
-        return user;
+    public Language getLanguageCode() {
+        return languageCode;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setLanguageCode(Language languageCode) {
+        this.languageCode = languageCode;
     }
 
     public String getName() {

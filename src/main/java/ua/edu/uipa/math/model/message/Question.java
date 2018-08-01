@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.model;
+package ua.edu.uipa.math.model.message;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

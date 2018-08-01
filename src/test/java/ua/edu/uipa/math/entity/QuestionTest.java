@@ -4,7 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import ua.edu.uipa.math.lib.builder.QuestionBuilder;
 import ua.edu.uipa.math.lib.random.Generator;
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

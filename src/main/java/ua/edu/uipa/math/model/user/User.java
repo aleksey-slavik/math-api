@@ -1,4 +1,4 @@
-package ua.edu.uipa.math.model;
+package ua.edu.uipa.math.model.user;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

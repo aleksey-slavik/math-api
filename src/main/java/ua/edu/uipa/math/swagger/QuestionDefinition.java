@@ -3,7 +3,7 @@ package ua.edu.uipa.math.swagger;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import ua.edu.uipa.math.exception.ResourceNotFoundException;
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 
 import javax.servlet.http.HttpServletResponse;
 

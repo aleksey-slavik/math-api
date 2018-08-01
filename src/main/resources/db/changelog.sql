@@ -30,7 +30,7 @@ INSERT INTO languages (code, name) VALUES ('UA', 'Ukrainian');
 CREATE TABLE IF NOT EXISTS users (
   username  VARCHAR(100) NOT NULL PRIMARY KEY,
   password  VARCHAR(100) NOT NULL,
-  email     VARCHAR(250) NOT NULL,
+  email     VARCHAR(250) NOT NULL UNIQUE,
   rank      VARCHAR(100) NOT NULL,
   activated BOOLEAN DEFAULT FALSE,
   updated   BIGINT       NOT NULL

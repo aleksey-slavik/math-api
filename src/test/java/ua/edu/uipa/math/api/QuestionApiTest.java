@@ -16,8 +16,8 @@ import ua.edu.uipa.math.controller.QuestionController;
 import ua.edu.uipa.math.dao.QuestionDao;
 import ua.edu.uipa.math.lib.builder.QuestionBuilder;
 import ua.edu.uipa.math.lib.random.Generator;
-import ua.edu.uipa.math.model.Error;
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.error.Error;
+import ua.edu.uipa.math.model.message.Question;
 import ua.edu.uipa.math.util.query.Criteria;
 
 import java.util.List;

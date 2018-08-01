@@ -1,5 +1,7 @@
-package ua.edu.uipa.math.model;
+package ua.edu.uipa.math.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import ua.edu.uipa.math.enums.Language;
 
@@ -11,6 +13,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Embeddable
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDetailsId implements Serializable {
 
     @NotNull

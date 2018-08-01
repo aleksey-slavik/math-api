@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ua.edu.uipa.math.exception.PropertyChangeException;
 import ua.edu.uipa.math.exception.ResourceNotFoundException;
-import ua.edu.uipa.math.model.Error;
+import ua.edu.uipa.math.model.error.Error;
 
 /**
  * Exception handlers.
