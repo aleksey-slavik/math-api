@@ -12,12 +12,13 @@ import ua.edu.uipa.math.model.user.User;
 import ua.edu.uipa.math.model.user.UserDetails;
 import ua.edu.uipa.math.model.user.UserFullResponse;
 import ua.edu.uipa.math.model.user.UserResponse;
+import ua.edu.uipa.math.swagger.UserDefinition;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
-public class UserController {
+public class UserController implements UserDefinition {
 
     private final UserDao userDao;
 
@@ -29,24 +30,34 @@ public class UserController {
         this.userDetailsDao = userDetailsDao;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     @GetMapping(
             value = "/{username}",
             headers = "Accept-Language",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<?> getUserByUsername(
+    public ResponseEntity<?> getUserByUsernameAndLanguage(
             @PathVariable String username,
             @RequestHeader(value = "Accept-Language") Language language) {
         User user = userDao.findOneByUsername(username);
         UserDetails details = userDetailsDao.findOneByUsernameAndLanguageCode(username, language);
 
-        if (user == null || details == null) {
+        if (user == null) {
             throw new ResourceNotFoundException("User with username=" + username + " not found!");
+        }
+
+        if (details == null) {
+            throw new ResourceNotFoundException("Translation for language=" + language + " for user with username=" + username + " not found!");
         }
 
         return ResponseEntity.ok().body(new UserResponse(user, details));
     }
 
-    @GetMapping("/{username}")
+    @GetMapping(
+            value = "/{username}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
         User user = userDao.findOneByUsername(username);
         List<UserDetails> details = userDetailsDao.findAllByUsername(username);

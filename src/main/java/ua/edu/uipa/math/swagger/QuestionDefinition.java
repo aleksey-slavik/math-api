@@ -4,11 +4,12 @@ import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import ua.edu.uipa.math.exception.ResourceNotFoundException;
 import ua.edu.uipa.math.model.message.Question;
+import ua.edu.uipa.math.controller.QuestionController;
 
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Contains all swagger documentation to {@link ua.edu.uipa.math.controller.QuestionController} operations
+ * Contains all swagger documentation to {@link QuestionController} operations
  *
  * @author oleksii.slavik
  */
