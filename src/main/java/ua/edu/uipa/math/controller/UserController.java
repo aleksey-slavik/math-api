@@ -1,6 +1,7 @@
 package ua.edu.uipa.math.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.uipa.math.dao.UserDao;
@@ -28,8 +29,13 @@ public class UserController {
         this.userDetailsDao = userDetailsDao;
     }
 
-    @GetMapping(value = "/{username}", headers = "Accept-Language")
-    public ResponseEntity<?> getUserByUsername(@PathVariable String username, @RequestHeader(value = "Accept-Language") Language language) {
+    @GetMapping(
+            value = "/{username}",
+            headers = "Accept-Language",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<?> getUserByUsername(
+            @PathVariable String username,
+            @RequestHeader(value = "Accept-Language") Language language) {
         User user = userDao.findOneByUsername(username);
         UserDetails details = userDetailsDao.findOneByUsernameAndLanguageCode(username, language);
 

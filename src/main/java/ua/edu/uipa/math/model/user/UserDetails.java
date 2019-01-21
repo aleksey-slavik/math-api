@@ -35,6 +35,11 @@ public class UserDetails {
     private String degree;
 
     @NotNull
+    @Length(max = 250)
+    @Column(name = "position", nullable = false)
+    private String position;
+
+    @NotNull
     @Length(max = 1000)
     @Column(name = "education", nullable = false)
     private String education;
@@ -74,6 +79,14 @@ public class UserDetails {
 
     public void setDegree(String degree) {
         this.degree = degree;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getEducation() {

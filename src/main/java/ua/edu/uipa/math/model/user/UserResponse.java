@@ -1,14 +1,8 @@
 package ua.edu.uipa.math.model.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import ua.edu.uipa.math.enums.Language;
 import ua.edu.uipa.math.enums.Rank;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserResponse {
 
     private String username;
@@ -23,13 +17,15 @@ public class UserResponse {
 
     private String degree;
 
+    private String position;
+
     private String education;
 
     private String cv;
 
-    private Boolean activated;
+    private Boolean isActive;
 
-    private Long updated;
+    private Long updatedAt;
 
     public UserResponse(User user, UserDetails details) {
         this.username = user.getUsername();
@@ -39,9 +35,10 @@ public class UserResponse {
         this.name = details.getName();
         this.degree = details.getDegree();
         this.education = details.getEducation();
+        this.position = details.getPosition();
         this.cv = details.getCv();
-        this.activated = user.getActivated();
-        this.updated = user.getUpdated();
+        this.isActive = user.getActive();
+        this.updatedAt = user.getUpdatedAt();
     }
 
     public String getUsername() {
@@ -92,6 +89,14 @@ public class UserResponse {
         this.degree = degree;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public String getEducation() {
         return education;
     }
@@ -108,19 +113,19 @@ public class UserResponse {
         this.cv = cv;
     }
 
-    public Boolean getActivated() {
-        return activated;
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 
-    public Long getUpdated() {
-        return updated;
+    public Long getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated(Long updated) {
-        this.updated = updated;
+    public void setUpdatedAt(Long updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

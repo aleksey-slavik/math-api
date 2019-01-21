@@ -34,11 +34,11 @@ public class User {
     private String email;
 
     @NotNull
-    @Column(name = "activated")
-    private Boolean activated;
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
 
-    @Column(name = "updated", nullable = false)
-    private Long updated;
+    @Column(name = "update_at", nullable = false)
+    private Long updatedAt;
 
     public String getUsername() {
         return username;
@@ -72,19 +72,19 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getActivated() {
-        return activated;
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 
-    public Long getUpdated() {
-        return updated;
+    public Long getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated(Long updated) {
-        this.updated = updated;
+    public void setUpdatedAt(Long updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

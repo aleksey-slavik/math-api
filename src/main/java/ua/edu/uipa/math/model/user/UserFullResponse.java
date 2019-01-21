@@ -1,15 +1,9 @@
 package ua.edu.uipa.math.model.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import ua.edu.uipa.math.enums.Rank;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserFullResponse {
 
     private String username;
@@ -22,9 +16,9 @@ public class UserFullResponse {
 
     private List<UserDetails> details;
 
-    private Boolean activated;
+    private Boolean isActive;
 
-    private Long updated;
+    private Long updatedAt;
 
     public UserFullResponse(User user, List<UserDetails> details) {
         this.username = user.getUsername();
@@ -32,8 +26,8 @@ public class UserFullResponse {
         this.rank = user.getRank();
         this.email = user.getEmail();
         this.details = details;
-        this.activated = user.getActivated();
-        this.updated = user.getUpdated();
+        this.isActive = user.getActive();
+        this.updatedAt = user.getUpdatedAt();
     }
 
     public String getUsername() {
@@ -76,19 +70,19 @@ public class UserFullResponse {
         this.details = details;
     }
 
-    public Boolean getActivated() {
-        return activated;
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 
-    public Long getUpdated() {
-        return updated;
+    public Long getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated(Long updated) {
-        this.updated = updated;
+    public void setUpdatedAt(Long updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
