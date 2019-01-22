@@ -1,9 +1,7 @@
-package ua.edu.uipa.math.model;
+package ua.edu.uipa.math.model.message;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -17,10 +15,8 @@ import java.util.Objects;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "question")
+@Table(name = "questions")
 public class Question {
 
     /**

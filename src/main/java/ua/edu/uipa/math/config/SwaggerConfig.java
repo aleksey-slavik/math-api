@@ -12,10 +12,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.RequestHandlerSelectors.withMethodAnnotation;
 
+/**
+ * Swagger configuration
+ *
+ * @author oleksii.slavik
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
+    /**
+     * {@link Docket} bean configuration
+     */
     @Bean
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -27,6 +35,11 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
 
+    /**
+     * Additional API information
+     *
+     * @return {@link ApiInfo} with additional API information
+     */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Math API")

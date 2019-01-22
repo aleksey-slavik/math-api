@@ -3,7 +3,7 @@ package ua.edu.uipa.math.dao.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.edu.uipa.math.dao.custom.QuestionDaoCustom;
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 import ua.edu.uipa.math.util.query.Criteria;
 import ua.edu.uipa.math.util.query.QueryHelper;
 

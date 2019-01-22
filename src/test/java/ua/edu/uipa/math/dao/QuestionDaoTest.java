@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import ua.edu.uipa.math.lib.random.Generator;
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 import ua.edu.uipa.math.util.query.Criteria;
 import ua.edu.uipa.math.lib.builder.QuestionBuilder;
 

@@ -1,6 +1,6 @@
 package ua.edu.uipa.math.dao.custom;
 
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 import ua.edu.uipa.math.util.query.Criteria;
 
 import java.util.List;

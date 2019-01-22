@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ua.edu.uipa.math.exception.ResourceNotFoundException;
-import ua.edu.uipa.math.model.Question;
+import ua.edu.uipa.math.model.message.Question;
 import ua.edu.uipa.math.dao.QuestionDao;
 import ua.edu.uipa.math.swagger.QuestionDefinition;
 import ua.edu.uipa.math.util.PropertyFilter;
