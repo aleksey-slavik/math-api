@@ -1,33 +1,33 @@
-package ua.edu.uipa.math.model.user;
+package ua.edu.uipa.math.dto.user;
 
 import ua.edu.uipa.math.enums.Rank;
+import ua.edu.uipa.math.model.user.User;
+import ua.edu.uipa.math.model.user.UserDetails;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserFullResponse {
 
     private String username;
 
-    private String password;
-
     private Rank rank;
 
     private String email;
-
-    private List<UserDetails> details;
 
     private Boolean isActive;
 
     private Long updatedAt;
 
+    private List<UserTranslation> translations;
+
     public UserFullResponse(User user, List<UserDetails> details) {
         this.username = user.getUsername();
-        this.password = user.getPassword();
         this.rank = user.getRank();
         this.email = user.getEmail();
-        this.details = details;
         this.isActive = user.getActive();
         this.updatedAt = user.getUpdatedAt();
+        this.translations = details.stream().map(UserTranslation::new).collect(Collectors.toList());
     }
 
     public String getUsername() {
@@ -36,14 +36,6 @@ public class UserFullResponse {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Rank getRank() {
@@ -62,14 +54,6 @@ public class UserFullResponse {
         this.email = email;
     }
 
-    public List<UserDetails> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<UserDetails> details) {
-        this.details = details;
-    }
-
     public Boolean getActive() {
         return isActive;
     }
@@ -84,5 +68,13 @@ public class UserFullResponse {
 
     public void setUpdatedAt(Long updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<UserTranslation> getTranslations() {
+        return translations;
+    }
+
+    public void setTranslations(List<UserTranslation> translations) {
+        this.translations = translations;
     }
 }

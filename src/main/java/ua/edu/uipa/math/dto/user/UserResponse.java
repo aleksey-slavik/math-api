@@ -1,7 +1,9 @@
-package ua.edu.uipa.math.model.user;
+package ua.edu.uipa.math.dto.user;
 
 import ua.edu.uipa.math.enums.Language;
 import ua.edu.uipa.math.enums.Rank;
+import ua.edu.uipa.math.model.user.User;
+import ua.edu.uipa.math.model.user.UserDetails;
 
 public class UserResponse {
 
